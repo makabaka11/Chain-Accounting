@@ -71,4 +71,4 @@ Release 构建使用 `android/key.properties` 配置签名信息，密钥库位�
 
 ## License
 
-Private project.
+MIT.
