@@ -54,14 +54,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build universal APK
-        run: flutter build apk --release
-
-      - name: Rename universal APK
-        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-universal-release.apk
-
       - name: Build split APKs
         run: flutter build apk --release --split-per-abi
+
+      - name: Build universal APK
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --release
+          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-universal-release.apk
 
       - name: Read release notes
         id: notes
